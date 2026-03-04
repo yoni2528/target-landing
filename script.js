@@ -418,8 +418,11 @@ function initCarousel(carousel) {
     dot.addEventListener('click', () => { goTo(i); startTimer(); });
   });
 
-  animateSlide(slides[0]);
-  startTimer();
+  // Don't auto-start — wait for animateStickyCard to trigger
+  carousel._start = function() {
+    animateSlide(slides[0]);
+    startTimer();
+  };
 }
 
 function animateSlide(slide) {
@@ -522,9 +525,12 @@ function animateSlide(slide) {
 function animateStickyCard(card) {
   if (!card || card._animated) return;
   card._animated = true;
-  // Init carousel if present
+  // Init and start carousel when card becomes visible
   const carousel = card.querySelector('.mod-carousel');
-  if (carousel && !carousel._init) initCarousel(carousel);
+  if (carousel) {
+    if (!carousel._init) initCarousel(carousel);
+    if (carousel._start) { carousel._start(); carousel._start = null; }
+  }
   // Count-up numbers
   card.querySelectorAll('.mock-count').forEach(counter => {
     const target = parseInt(counter.dataset.target);
