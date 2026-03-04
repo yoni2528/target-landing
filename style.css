@@ -246,22 +246,47 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:16px 6
 .cb-text{font-size:12px;color:#6b7a8d;line-height:1.5}
 .cb-text strong{color:#0a1628;display:block;margin-bottom:2px;font-size:13px}
 
-/* ===== MORE FEATURES MARQUEE (Module 8) ===== */
-.more-wrap{background:#fff;border-radius:20px;padding:32px 0;box-shadow:0 2px 4px rgba(10,22,40,0.03),0 12px 36px rgba(10,22,40,0.06);overflow:hidden;display:flex;flex-direction:column;gap:20px}
-.more-center{text-align:center;padding:12px 0}
-.more-num{font-size:56px;font-weight:900;color:#0a1628;line-height:1}
-.more-label{font-size:14px;font-weight:600;color:#8a96a6;margin-top:4px}
-.more-marquee-row{overflow:hidden;width:100%;position:relative}
-.more-marquee-row::before,.more-marquee-row::after{content:'';position:absolute;top:0;bottom:0;width:40px;z-index:2;pointer-events:none}
-.more-marquee-row::before{right:0;background:linear-gradient(to left,#fff,transparent)}
-.more-marquee-row::after{left:0;background:linear-gradient(to right,#fff,transparent)}
-.more-marquee-track{display:flex;gap:10px;width:max-content}
-.more-marquee-rtl .more-marquee-track{animation:marqueeRTL 18s linear infinite}
-.more-marquee-ltr .more-marquee-track{animation:marqueeLTR 18s linear infinite}
-@keyframes marqueeRTL{0%{transform:translateX(0)}100%{transform:translateX(50%)}}
-@keyframes marqueeLTR{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
-.mm-tag{padding:8px 16px;border-radius:20px;font-size:12px;font-weight:600;color:#2979ff;background:#f0f4ff;white-space:nowrap;flex-shrink:0}
-.mm-tag.mm-alt{background:#e8f5e9;color:#2e7d32}
+/* ===== DIARY FLOW (Module 1 — stacked steps) ===== */
+.diary-flow{padding:14px 18px}
+.df-step{opacity:0;transform:translateY(10px);transition:all 0.5s cubic-bezier(0.4,0,0.2,1)}
+.sticky-card.active .df-step{opacity:1;transform:translateY(0)}
+.sticky-card.active .df-step-2{transition-delay:1.2s}
+.sticky-card.active .df-step-3{transition-delay:2s}
+.df-arrow{text-align:center;padding:4px 0;opacity:0;transition:opacity 0.3s ease}
+.sticky-card.active .df-arrow-1{opacity:1;transition-delay:1s}
+.sticky-card.active .df-arrow-2{opacity:1;transition-delay:1.8s}
+.df-head{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:#8a96a6;margin-bottom:8px}
+.df-num{width:20px;height:20px;border-radius:50%;background:#2979ff;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.df-fields{display:flex;flex-direction:column;gap:6px}
+.df-f{display:flex;align-items:center;gap:8px}
+.df-k{font-size:10px;font-weight:600;color:#8a96a6;width:28px;flex-shrink:0}
+.df-v{font-size:12px;font-weight:600;color:#0a1628;background:#f7f8fb;border:1.5px solid #e4e9f0;border-radius:6px;padding:6px 10px;flex:1;min-height:28px;display:flex;align-items:center}
+.df-v::after{content:'|';animation:blink 1s infinite;color:#2979ff;font-weight:300;margin-right:1px}
+.df-v.typed::after{display:none}
+.df-rows{display:flex;flex-direction:column;gap:4px}
+.df-tr{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:500;padding:6px 10px;background:#f7f8fb;border-radius:6px}
+.df-tr span:first-child{flex:1;font-weight:600;color:#0a1628}
+.df-tr span:nth-child(2){color:#8a96a6;font-size:10px}
+.df-tag{font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;background:#e3f2fd;color:#2979ff}
+.df-export{display:flex;gap:8px}
+.df-exp-btn{display:flex;align-items:center;gap:6px;background:#2979ff;color:#fff;font-size:12px;font-weight:600;padding:10px 18px;border-radius:8px}
+.df-exp-alt{display:flex;align-items:center;gap:6px;background:#f0f4ff;color:#2979ff;font-size:12px;font-weight:600;padding:10px 18px;border-radius:8px}
+
+/* ===== ORBIT (Module 8 — rotating icons) ===== */
+.orbit-wrap{position:relative;height:360px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:20px;box-shadow:0 2px 4px rgba(10,22,40,0.03),0 12px 36px rgba(10,22,40,0.06);overflow:hidden}
+.orbit-center{position:relative;z-index:3;text-align:center}
+.orbit-num{font-size:64px;font-weight:900;color:#0a1628;line-height:1}
+.orbit-sub{font-size:14px;font-weight:600;color:#8a96a6;margin-top:2px}
+.orbit-ring{position:absolute;border-radius:50%;border:1.5px dashed rgba(41,121,255,0.12);top:50%;left:50%}
+.orbit-r1{width:200px;height:200px;margin:-100px 0 0 -100px;animation:orbitSpin 30s linear infinite}
+.orbit-r2{width:310px;height:310px;margin:-155px 0 0 -155px;animation:orbitSpin 45s linear infinite reverse}
+@keyframes orbitSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.oi{position:absolute;top:50%;left:50%;width:38px;height:38px;margin:-19px 0 0 -19px;transform:rotate(calc(var(--a) * 1deg)) translateX(var(--r,100px)) rotate(calc(var(--a) * -1deg));background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 2px 8px rgba(10,22,40,0.1)}
+.orbit-r1 .oi{--r:100px}
+.orbit-r2 .oi{--r:155px}
+.oi span{display:block;animation:oiSteady 30s linear infinite}
+.orbit-r2 .oi span{animation-duration:45s;animation-direction:reverse}
+@keyframes oiSteady{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
 
 /* ===== MOD CARD (shared) ===== */
 .mod-card{width:100%;display:flex;flex-direction:column}
