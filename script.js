@@ -518,6 +518,15 @@ function animateSlide(slide) {
 
   window.addEventListener('scroll', update, { passive: true });
   update();
+
+  // Fire animation for card 0 on first scroll into modules section
+  const firstCardObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      animateStickyCard(cards[0]);
+      firstCardObserver.disconnect();
+    }
+  }, { threshold: 0.1 });
+  firstCardObserver.observe(section);
 })();
 
 function animateStickyCard(card) {
