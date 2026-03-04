@@ -410,7 +410,8 @@ function initCarousel(carousel) {
 
   function startTimer() {
     clearInterval(timer);
-    timer = setInterval(() => goTo(current + 1), 3500);
+    const speed = parseInt(carousel.dataset.speed) || 3500;
+    timer = setInterval(() => goTo(current + 1), speed);
   }
 
   dots.forEach((dot, i) => {
@@ -521,6 +522,9 @@ function animateSlide(slide) {
 function animateStickyCard(card) {
   if (!card || card._animated) return;
   card._animated = true;
+  // Init carousel if present
+  const carousel = card.querySelector('.mod-carousel');
+  if (carousel && !carousel._init) initCarousel(carousel);
   // Count-up numbers
   card.querySelectorAll('.mock-count').forEach(counter => {
     const target = parseInt(counter.dataset.target);

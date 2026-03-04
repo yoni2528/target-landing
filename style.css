@@ -246,19 +246,20 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:16px 6
 .cb-text{font-size:12px;color:#6b7a8d;line-height:1.5}
 .cb-text strong{color:#0a1628;display:block;margin-bottom:2px;font-size:13px}
 
-/* ===== DOCUMENT SIGNATURE (Module 8) ===== */
-.doc-sign-wrap{display:flex;justify-content:center;padding:20px}
-.doc-paper{background:#fff;border-radius:16px;padding:28px 24px;width:100%;max-width:340px;box-shadow:0 4px 24px rgba(10,22,40,0.08);border:1px solid #eef1f5}
-.doc-paper-header{font-size:16px;font-weight:800;color:#0a1628;margin-bottom:16px;text-align:center}
-.doc-paper-line{height:8px;background:#f0f2f5;border-radius:4px;margin-bottom:10px}
-.doc-paper-line.short{width:65%}
-.doc-sign-area{margin-top:20px;padding-top:16px;border-top:1.5px dashed #d0d7e0}
-.doc-sign-label{font-size:10px;color:#8a96a6;font-weight:600;display:block;margin-bottom:8px}
-.doc-sign-svg{width:100%;height:50px}
-.sign-path{stroke-dasharray:300;stroke-dashoffset:300;transition:stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1)}
-.sticky-card.active .sign-path{stroke-dashoffset:0}
-.doc-stamp{display:flex;align-items:center;gap:6px;margin-top:12px;font-size:12px;font-weight:700;color:#00c853;opacity:0;transition:opacity 0.4s 1.5s}
-.sticky-card.active .doc-stamp{opacity:1}
+/* ===== MORE FEATURES BENTO (Module 8) ===== */
+.more-features-wrap{background:#fff;border-radius:20px;padding:24px 20px;box-shadow:0 2px 4px rgba(10,22,40,0.03),0 12px 36px rgba(10,22,40,0.06)}
+.mf-header{font-size:14px;font-weight:700;color:#0a1628;text-align:center;margin-bottom:16px}
+.mf-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mf-item{background:#f7f8fb;border-radius:12px;padding:18px 14px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);opacity:0;transform:translateY(16px)}
+.mf-item span{font-size:11px;font-weight:600;color:#0a1628}
+.sticky-card.active .mf-anim-1{opacity:1;transform:translateY(0);transition-delay:0.1s}
+.sticky-card.active .mf-anim-2{opacity:1;transform:translateY(0);transition-delay:0.2s}
+.sticky-card.active .mf-anim-3{opacity:1;transform:translateY(0);transition-delay:0.3s}
+.sticky-card.active .mf-anim-4{opacity:1;transform:translateY(0);transition-delay:0.4s}
+.sticky-card.active .mf-anim-5{opacity:1;transform:translateY(0);transition-delay:0.5s}
+.sticky-card.active .mf-anim-6{opacity:1;transform:translateY(0);transition-delay:0.6s}
+.mf-item:hover{background:#e3f2fd;transform:translateY(-2px)}
+.mf-total{text-align:center;margin-top:14px;font-size:13px;font-weight:700;color:#2979ff}
 
 /* ===== MOD CARD (shared) ===== */
 .mod-card{width:100%;display:flex;flex-direction:column}
