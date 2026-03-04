@@ -472,18 +472,123 @@
               <span class="mod-big-label">לקוחות רשומים</span>
             </div>
             <div class="mod-clients-map">
-              <svg viewBox="-5 -5 110 325" class="mod-israel-map">
-                <path d="M0.0,171.6 L5.1,167.6 L9.7,156.0 L20.0,146.3 L22.3,131.2 L35.1,101.6 L44.5,68.9 L50.7,37.7 L59.0,32.7 L61.8,15.9 L66.9,16.5 L71.2,15.7 L75.7,15.1 L77.8,18.7 L88.3,16.1 L91.4,9.6 L92.9,2.4 L94.4,0.0 L95.9,2.6 L100.0,2.9 L99.3,16.6 L96.0,21.4 L97.0,32.5 L99.1,37.5 L97.3,46.7 L97.2,51.0 L95.0,57.0 L93.9,63.1 L93.7,72.9 L88.5,73.5 L82.8,71.3 L82.8,67.7 L80.3,64.4 L74.3,64.4 L68.6,61.1 L65.4,64.1 L60.9,67.0 L58.2,68.3 L57.1,71.2 L56.2,74.3 L56.3,76.8 L54.8,78.0 L53.8,82.3 L55.0,84.3 L54.0,87.2 L51.6,89.7 L50.7,92.9 L52.0,95.5 L51.6,99.0 L52.5,108.9 L54.1,113.4 L50.0,118.2 L54.1,121.8 L60.7,121.2 L68.4,122.9 L69.4,125.5 L68.9,129.4 L65.9,128.0 L62.7,128.8 L58.1,132.7 L52.3,136.3 L48.5,146.2 L46.6,152.1 L44.8,158.2 L51.0,160.5 L60.9,160.0 L69.7,158.5 L77.6,152.0 L86.9,155.9 L81.8,171.1 L84.5,184.2 L76.8,201.2 L73.8,209.0 L67.2,226.1 L66.7,243.8 L58.5,276.4 L56.4,290.4 L52.5,305.8 L45.8,314.7 L44.1,302.1 L32.3,264.7 L18.1,228.0 L5.6,188.7 Z" fill="#f0f4ff" stroke="#2979ff" stroke-width="1.5"/>
+              <svg viewBox="0 0 200 520" class="mod-israel-map">
+                <defs>
+                  <linearGradient id="topoGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#7bc47f"/>
+                    <stop offset="35%" stop-color="#a8d4a0"/>
+                    <stop offset="60%" stop-color="#d4d89a"/>
+                    <stop offset="85%" stop-color="#c8c080"/>
+                    <stop offset="100%" stop-color="#a8b070"/>
+                  </linearGradient>
+                  <linearGradient id="topoStroke" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#5aaa5e"/>
+                    <stop offset="100%" stop-color="#7ab87e"/>
+                  </linearGradient>
+                  <filter id="mapShadow"><feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#0a1628" flood-opacity="0.3"/></filter>
+                </defs>
+                <!-- Israel outline with all territories -->
+                <path filter="url(#mapShadow)" d="
+                  M 58,0
+                  C 60,2 63,5 67,4
+                  L 72,2 76,5 80,3
+                  C 84,1 90,0 94,3
+                  L 98,8 102,6
+                  C 108,4 115,2 120,5
+                  L 128,3
+                  C 134,1 140,4 142,8
+                  L 140,14 143,18
+                  C 146,16 152,12 158,8
+                  L 164,5
+                  C 168,3 172,6 170,10
+                  L 166,16 168,22
+                  C 170,28 168,34 164,38
+                  L 160,42 162,48
+                  C 160,54 156,58 152,60
+                  L 148,62 150,68
+                  C 148,74 144,78 140,82
+                  L 138,86
+                  C 136,92 138,96 140,100
+                  L 142,106 140,112
+                  C 136,116 132,118 128,120
+                  L 126,124
+                  C 130,128 134,132 136,138
+                  L 138,144
+                  C 142,148 144,154 142,160
+                  L 140,166 142,172
+                  C 140,178 136,182 132,184
+                  L 128,186 126,190
+                  C 122,194 118,196 114,196
+                  L 108,198 102,200
+                  C 96,202 90,206 86,210
+                  L 80,216
+                  C 76,222 78,228 82,232
+                  L 88,236
+                  C 94,238 98,244 96,250
+                  L 92,256 94,262
+                  C 92,268 88,274 84,278
+                  L 78,284
+                  C 74,288 72,294 74,300
+                  L 78,308
+                  C 80,314 76,320 72,324
+                  L 66,330
+                  C 62,336 58,344 56,352
+                  L 54,360
+                  C 52,368 48,376 46,384
+                  L 44,392
+                  C 42,400 38,408 36,416
+                  L 32,428
+                  C 28,440 26,448 28,456
+                  L 32,464
+                  C 36,470 42,474 48,472
+                  L 56,468
+                  C 60,466 62,470 58,476
+                  L 52,484 46,490
+                  C 42,496 38,502 36,510
+                  L 34,516
+                  C 30,514 26,508 24,500
+                  L 18,484
+                  C 14,474 10,462 6,448
+                  L 2,430
+                  C 0,420 2,410 6,400
+                  L 14,384
+                  C 18,374 20,364 20,354
+                  L 18,340
+                  C 16,330 18,320 22,312
+                  L 28,302
+                  C 32,294 34,284 32,276
+                  L 30,264
+                  C 28,254 24,244 20,236
+                  L 14,226
+                  C 10,218 8,210 10,202
+                  L 14,192
+                  C 18,184 22,178 24,170
+                  L 26,160
+                  C 28,152 30,144 32,136
+                  L 34,126
+                  C 36,118 38,110 38,102
+                  L 36,92
+                  C 34,84 36,76 40,70
+                  L 44,62
+                  C 48,56 50,48 48,40
+                  L 46,32
+                  C 44,24 46,16 50,10
+                  L 54,4 Z
+                " fill="url(#topoGrad)" stroke="url(#topoStroke)" stroke-width="2"/>
+                <!-- Kinneret -->
+                <ellipse cx="144" cy="72" rx="6" ry="10" fill="#6cc8e4" opacity="0.8"/>
+                <!-- Dead Sea -->
+                <ellipse cx="136" cy="200" rx="5" ry="22" fill="#6cc8e4" opacity="0.7"/>
                 <!-- Haifa -->
-                <circle cx="26" cy="55" r="4" fill="#2979ff" opacity="0.9"><animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/></circle>
+                <circle cx="52" cy="68" r="5" fill="#2979ff" opacity="0.9"><animate attributeName="r" values="4;6.5;4" dur="2s" repeatCount="indefinite"/></circle>
                 <!-- Tel Aviv -->
-                <circle cx="18" cy="120" r="5" fill="#2979ff" opacity="0.85"><animate attributeName="r" values="3.5;6;3.5" dur="2.5s" repeatCount="indefinite"/></circle>
+                <circle cx="30" cy="160" r="6" fill="#2979ff" opacity="0.85"><animate attributeName="r" values="4.5;7.5;4.5" dur="2.5s" repeatCount="indefinite"/></circle>
                 <!-- Jerusalem -->
-                <circle cx="52" cy="130" r="4" fill="#2979ff" opacity="0.8"><animate attributeName="r" values="3;5;3" dur="2.2s" repeatCount="indefinite"/></circle>
+                <circle cx="110" cy="190" r="5" fill="#2979ff" opacity="0.8"><animate attributeName="r" values="4;6.5;4" dur="2.2s" repeatCount="indefinite"/></circle>
                 <!-- Beer Sheva -->
-                <circle cx="35" cy="195" r="3.5" fill="#2979ff" opacity="0.6"><animate attributeName="r" values="2.5;4.5;2.5" dur="1.8s" repeatCount="indefinite"/></circle>
+                <circle cx="62" cy="300" r="4.5" fill="#2979ff" opacity="0.6"><animate attributeName="r" values="3.5;5.5;3.5" dur="1.8s" repeatCount="indefinite"/></circle>
                 <!-- Eilat -->
-                <circle cx="48" cy="305" r="2.5" fill="#2979ff" opacity="0.4"><animate attributeName="r" values="2;3.5;2" dur="2s" repeatCount="indefinite"/></circle>
+                <circle cx="46" cy="496" r="3.5" fill="#2979ff" opacity="0.4"><animate attributeName="r" values="2.5;4.5;2.5" dur="2s" repeatCount="indefinite"/></circle>
               </svg>
             </div>
             <div class="mod-clients-stats">
