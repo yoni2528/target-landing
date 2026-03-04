@@ -311,35 +311,24 @@
 
       <!-- Right: Sticky visual panel -->
       <div class="sticky-visual-panel">
-        <!-- Card 0: יומן יורים — Stacked flow (3 stages animate in sequence) -->
+        <!-- Card 0: יומן יורים — Live diary table -->
         <div class="sticky-card active" data-idx="0">
-          <div class="mod-card">
-            <div class="mod-card-header">יומן יורים דיגיטלי</div>
-            <div class="diary-flow">
-              <div class="df-step">
-                <div class="df-head"><span class="df-num">1</span>הקלדת יורה</div>
-                <div class="df-fields">
-                  <div class="df-f"><span class="df-k">שם</span><span class="df-v mod-typing" data-text="יוסי כהן"></span></div>
-                  <div class="df-f"><span class="df-k">ת.ז</span><span class="df-v mod-typing" data-text="305128476" data-delay="300"></span></div>
-                  <div class="df-f"><span class="df-k">נשק</span><span class="df-v mod-typing" data-text="אקדח 9mm" data-delay="600"></span></div>
-                </div>
-              </div>
-              <div class="df-arrow df-arrow-1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2979ff" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
-              <div class="df-step df-step-2">
-                <div class="df-head"><span class="df-num">2</span>טבלת יומן</div>
-                <div class="df-rows">
-                  <div class="df-tr"><span>יוסי כהן</span><span>9mm</span><span class="df-tag">רענון</span></div>
-                  <div class="df-tr"><span>דני לוי</span><span>5.56</span><span class="df-tag">מתחמש</span></div>
-                  <div class="df-tr"><span>נועה גולן</span><span>9mm</span><span class="df-tag">חידוש</span></div>
-                </div>
-              </div>
-              <div class="df-arrow df-arrow-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2979ff" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
-              <div class="df-step df-step-3">
-                <div class="df-head"><span class="df-num">3</span>ייצוא</div>
-                <div class="df-export">
-                  <div class="df-exp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF</div>
-                  <div class="df-exp-alt"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2979ff" stroke-width="2"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>ענן</div>
-                </div>
+          <div class="diary-live">
+            <div class="dl-top"><span class="dl-dot dl-dot-r"></span><span class="dl-dot dl-dot-y"></span><span class="dl-dot dl-dot-g"></span><span class="dl-title">יומן יורים — 04.03.2026</span></div>
+            <div class="dl-table">
+              <div class="dl-head"><span>#</span><span>שם</span><span>נשק</span><span>קוטר</span><span>סוג</span></div>
+              <div class="dl-row dl-r1"><span>1</span><span>יוסי כהן</span><span>אקדח</span><span>9mm</span><span class="dl-tag">רענון</span></div>
+              <div class="dl-row dl-r2"><span>2</span><span>דני לוי</span><span>רובה</span><span>5.56</span><span class="dl-tag dl-tag-new">מתחמש</span></div>
+              <div class="dl-row dl-r3"><span>3</span><span>נועה גולן</span><span>אקדח</span><span>9mm</span><span class="dl-tag dl-tag-ren">חידוש</span></div>
+              <div class="dl-row dl-r4"><span>4</span><span>רון אברהם</span><span>אקדח</span><span>.45</span><span class="dl-tag">רענון</span></div>
+              <div class="dl-row dl-r5"><span>5</span><span class="dl-typing" data-text="מיכל דוד"></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="dl-footer">
+              <div class="dl-stat"><span class="dl-stat-n">5</span>יורים</div>
+              <div class="dl-stat"><span class="dl-stat-n">238</span>כדורים</div>
+              <div class="dl-actions">
+                <div class="dl-btn-pdf"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF</div>
+                <div class="dl-btn-cloud"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2979ff" stroke-width="2"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg></div>
               </div>
             </div>
           </div>
@@ -465,20 +454,20 @@
         <div class="sticky-card" data-idx="7">
           <div class="orbit-wrap">
             <div class="orbit-ring orbit-r1">
-              <div class="oi" style="--a:0"><span>📋</span></div>
-              <div class="oi" style="--a:60"><span>📱</span></div>
-              <div class="oi" style="--a:120"><span>💰</span></div>
-              <div class="oi" style="--a:180"><span>🔔</span></div>
-              <div class="oi" style="--a:240"><span>📊</span></div>
-              <div class="oi" style="--a:300"><span>✍️</span></div>
+              <div class="oi" style="--a:0"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a1628" stroke-width="2" stroke-linecap="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></span></div>
+              <div class="oi" style="--a:60"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2979ff" stroke-width="2" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg></span></div>
+              <div class="oi" style="--a:120"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a1628" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span></div>
+              <div class="oi" style="--a:180"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2979ff" stroke-width="2" stroke-linecap="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></span></div>
+              <div class="oi" style="--a:240"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a1628" stroke-width="2" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span></div>
+              <div class="oi" style="--a:300"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2979ff" stroke-width="2" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span></div>
             </div>
             <div class="orbit-ring orbit-r2">
-              <div class="oi" style="--a:30"><span>🎯</span></div>
-              <div class="oi" style="--a:90"><span>👥</span></div>
-              <div class="oi" style="--a:150"><span>📄</span></div>
-              <div class="oi" style="--a:210"><span>📦</span></div>
-              <div class="oi" style="--a:270"><span>💳</span></div>
-              <div class="oi" style="--a:330"><span>📈</span></div>
+              <div class="oi" style="--a:30"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a1628" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span></div>
+              <div class="oi" style="--a:90"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2979ff" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span></div>
+              <div class="oi" style="--a:150"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a1628" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span></div>
+              <div class="oi" style="--a:210"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2979ff" stroke-width="2" stroke-linecap="round"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/></svg></span></div>
+              <div class="oi" style="--a:270"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a1628" stroke-width="2" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span></div>
+              <div class="oi" style="--a:330"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2979ff" stroke-width="2" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span></div>
             </div>
             <div class="orbit-center">
               <div class="orbit-num"><span class="mock-count" data-target="15">0</span></div>

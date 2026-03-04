@@ -540,7 +540,7 @@ function animateStickyCard(card) {
     setTimeout(() => requestAnimationFrame(tick), 300);
   });
   // Typing animations
-  card.querySelectorAll('.mod-typing').forEach(el => {
+  card.querySelectorAll('.mod-typing, .dl-typing').forEach(el => {
     const text = el.dataset.text;
     const delay = parseInt(el.dataset.delay) || 0;
     el.textContent = '';

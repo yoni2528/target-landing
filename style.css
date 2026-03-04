@@ -246,31 +246,36 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:16px 6
 .cb-text{font-size:12px;color:#6b7a8d;line-height:1.5}
 .cb-text strong{color:#0a1628;display:block;margin-bottom:2px;font-size:13px}
 
-/* ===== DIARY FLOW (Module 1 — stacked steps) ===== */
-.diary-flow{padding:14px 18px}
-.df-step{opacity:0;transform:translateY(10px);transition:all 0.5s cubic-bezier(0.4,0,0.2,1)}
-.sticky-card.active .df-step{opacity:1;transform:translateY(0)}
-.sticky-card.active .df-step-2{transition-delay:1.2s}
-.sticky-card.active .df-step-3{transition-delay:2s}
-.df-arrow{text-align:center;padding:4px 0;opacity:0;transition:opacity 0.3s ease}
-.sticky-card.active .df-arrow-1{opacity:1;transition-delay:1s}
-.sticky-card.active .df-arrow-2{opacity:1;transition-delay:1.8s}
-.df-head{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:#8a96a6;margin-bottom:8px}
-.df-num{width:20px;height:20px;border-radius:50%;background:#2979ff;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.df-fields{display:flex;flex-direction:column;gap:6px}
-.df-f{display:flex;align-items:center;gap:8px}
-.df-k{font-size:10px;font-weight:600;color:#8a96a6;width:28px;flex-shrink:0}
-.df-v{font-size:12px;font-weight:600;color:#0a1628;background:#f7f8fb;border:1.5px solid #e4e9f0;border-radius:6px;padding:6px 10px;flex:1;min-height:28px;display:flex;align-items:center}
-.df-v::after{content:'|';animation:blink 1s infinite;color:#2979ff;font-weight:300;margin-right:1px}
-.df-v.typed::after{display:none}
-.df-rows{display:flex;flex-direction:column;gap:4px}
-.df-tr{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:500;padding:6px 10px;background:#f7f8fb;border-radius:6px}
-.df-tr span:first-child{flex:1;font-weight:600;color:#0a1628}
-.df-tr span:nth-child(2){color:#8a96a6;font-size:10px}
-.df-tag{font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;background:#e3f2fd;color:#2979ff}
-.df-export{display:flex;gap:8px}
-.df-exp-btn{display:flex;align-items:center;gap:6px;background:#2979ff;color:#fff;font-size:12px;font-weight:600;padding:10px 18px;border-radius:8px}
-.df-exp-alt{display:flex;align-items:center;gap:6px;background:#f0f4ff;color:#2979ff;font-size:12px;font-weight:600;padding:10px 18px;border-radius:8px}
+/* ===== DIARY LIVE TABLE (Module 1) ===== */
+.diary-live{background:#fff;border-radius:16px;box-shadow:0 2px 4px rgba(10,22,40,0.03),0 12px 36px rgba(10,22,40,0.06);overflow:hidden}
+.dl-top{display:flex;align-items:center;gap:6px;padding:10px 16px;background:#0a1628}
+.dl-dot{width:8px;height:8px;border-radius:50%}
+.dl-dot-r{background:#ff5f57}
+.dl-dot-y{background:#ffbd2e}
+.dl-dot-g{background:#28c840}
+.dl-title{color:rgba(255,255,255,0.5);font-size:11px;font-weight:500;margin-right:8px}
+.dl-table{padding:0}
+.dl-head{display:grid;grid-template-columns:28px 2fr 1.2fr 0.8fr 1fr;padding:8px 16px;font-size:10px;font-weight:700;color:#8a96a6;border-bottom:2px solid #eef1f5;letter-spacing:0.3px}
+.dl-row{display:grid;grid-template-columns:28px 2fr 1.2fr 0.8fr 1fr;padding:10px 16px;font-size:12px;font-weight:500;border-bottom:1px solid #f5f6f9;opacity:0;transform:translateX(20px);transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
+.dl-row span:first-child{color:#b0b8c4;font-size:10px;font-weight:600}
+.dl-row span:nth-child(2){font-weight:600;color:#0a1628}
+.sticky-card.active .dl-r1{opacity:1;transform:translateX(0);transition-delay:0.2s}
+.sticky-card.active .dl-r2{opacity:1;transform:translateX(0);transition-delay:0.5s}
+.sticky-card.active .dl-r3{opacity:1;transform:translateX(0);transition-delay:0.8s}
+.sticky-card.active .dl-r4{opacity:1;transform:translateX(0);transition-delay:1.1s}
+.sticky-card.active .dl-r5{opacity:1;transform:translateX(0);transition-delay:1.4s}
+.dl-tag{font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px;background:#e3f2fd;color:#2979ff}
+.dl-tag-new{background:#e8f5e9;color:#00c853}
+.dl-tag-ren{background:#fff3e0;color:#ff9100}
+.dl-typing{display:inline-flex;align-items:center;font-weight:600;color:#0a1628;font-size:12px}
+.dl-typing::after{content:'|';animation:blink 1s infinite;color:#2979ff;font-weight:300;margin-right:1px}
+.dl-typing.typed::after{display:none}
+.dl-footer{display:flex;align-items:center;gap:16px;padding:10px 16px;border-top:1.5px solid #eef1f5;background:#fafbfd}
+.dl-stat{font-size:11px;color:#8a96a6;font-weight:500}
+.dl-stat-n{font-weight:800;color:#0a1628;font-size:15px;margin-left:3px}
+.dl-actions{display:flex;gap:6px;margin-right:auto}
+.dl-btn-pdf{display:flex;align-items:center;gap:4px;background:#2979ff;color:#fff;font-size:10px;font-weight:600;padding:6px 12px;border-radius:6px}
+.dl-btn-cloud{display:flex;align-items:center;justify-content:center;background:#f0f4ff;width:28px;height:28px;border-radius:6px}
 
 /* ===== ORBIT (Module 8 — rotating icons) ===== */
 .orbit-wrap{position:relative;height:360px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:20px;box-shadow:0 2px 4px rgba(10,22,40,0.03),0 12px 36px rgba(10,22,40,0.06);overflow:hidden}
@@ -281,7 +286,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:16px 6
 .orbit-r1{width:200px;height:200px;margin:-100px 0 0 -100px;animation:orbitSpin 30s linear infinite}
 .orbit-r2{width:310px;height:310px;margin:-155px 0 0 -155px;animation:orbitSpin 45s linear infinite reverse}
 @keyframes orbitSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-.oi{position:absolute;top:50%;left:50%;width:38px;height:38px;margin:-19px 0 0 -19px;transform:rotate(calc(var(--a) * 1deg)) translateX(var(--r,100px)) rotate(calc(var(--a) * -1deg));background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 2px 8px rgba(10,22,40,0.1)}
+.oi{position:absolute;top:50%;left:50%;width:40px;height:40px;margin:-20px 0 0 -20px;transform:rotate(calc(var(--a) * 1deg)) translateX(var(--r,100px)) rotate(calc(var(--a) * -1deg));background:#f0f4ff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 2px 8px rgba(10,22,40,0.08);border:1.5px solid #e3ecf8}
 .orbit-r1 .oi{--r:100px}
 .orbit-r2 .oi{--r:155px}
 .oi span{display:block;animation:oiSteady 30s linear infinite}
