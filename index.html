@@ -311,25 +311,53 @@
 
       <!-- Right: Sticky visual panel -->
       <div class="sticky-visual-panel">
-        <!-- Card 0: יומן יורים — Live diary table -->
+        <!-- Card 0: יומן יורים — Scroll-triggered carousel -->
         <div class="sticky-card active" data-idx="0">
-          <div class="diary-live">
-            <div class="dl-top"><span class="dl-dot dl-dot-r"></span><span class="dl-dot dl-dot-y"></span><span class="dl-dot dl-dot-g"></span><span class="dl-title">יומן יורים — 04.03.2026</span></div>
-            <div class="dl-table">
-              <div class="dl-head"><span>#</span><span>שם</span><span>נשק</span><span>קוטר</span><span>סוג</span></div>
-              <div class="dl-row dl-r1"><span>1</span><span>יוסי כהן</span><span>אקדח</span><span>9mm</span><span class="dl-tag">רענון</span></div>
-              <div class="dl-row dl-r2"><span>2</span><span>דני לוי</span><span>רובה</span><span>5.56</span><span class="dl-tag dl-tag-new">מתחמש</span></div>
-              <div class="dl-row dl-r3"><span>3</span><span>נועה גולן</span><span>אקדח</span><span>9mm</span><span class="dl-tag dl-tag-ren">חידוש</span></div>
-              <div class="dl-row dl-r4"><span>4</span><span>רון אברהם</span><span>אקדח</span><span>.45</span><span class="dl-tag">רענון</span></div>
-              <div class="dl-row dl-r5"><span>5</span><span class="dl-typing" data-text="מיכל דוד"></span><span></span><span></span><span></span></div>
-            </div>
-            <div class="dl-footer">
-              <div class="dl-stat"><span class="dl-stat-n">5</span>יורים</div>
-              <div class="dl-stat"><span class="dl-stat-n">238</span>כדורים</div>
-              <div class="dl-actions">
-                <div class="dl-btn-pdf"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF</div>
-                <div class="dl-btn-cloud"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2979ff" stroke-width="2"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg></div>
+          <div class="mod-card">
+            <div class="mod-card-header">יומן יורים דיגיטלי</div>
+            <div class="mod-carousel" id="diary-carousel" data-scroll-carousel="true">
+              <!-- Slide 1: הקלדת יורה -->
+              <div class="carousel-slide active">
+                <div class="mod-form-demo">
+                  <div class="mod-field-row">
+                    <div class="mod-field"><div class="mod-field-label">שם מלא</div><div class="mod-field-val mod-typing" data-text="יוסי כהן"></div></div>
+                    <div class="mod-field"><div class="mod-field-label">ת.ז</div><div class="mod-field-val mod-typing" data-text="305128476" data-delay="400"></div></div>
+                  </div>
+                  <div class="mod-field-row">
+                    <div class="mod-field"><div class="mod-field-label">סוג נשק</div><div class="mod-field-val mod-typing" data-text="אקדח 9mm" data-delay="800"></div></div>
+                    <div class="mod-field"><div class="mod-field-label">סוג אימון</div><div class="mod-field-val mod-typing" data-text="רענון" data-delay="1100"></div></div>
+                  </div>
+                  <div class="mod-form-btn">שמור יורה</div>
+                </div>
               </div>
+              <!-- Slide 2: טבלת יומן -->
+              <div class="carousel-slide">
+                <div class="mod-diary-table">
+                  <div class="mod-tbl-head"><span>שם</span><span>נשק</span><span>קוטר</span><span>כמות</span><span>סוג</span></div>
+                  <div class="mod-tbl-row"><span>יוסי כהן</span><span>אקדח</span><span>9mm</span><span>50</span><span>רענון</span></div>
+                  <div class="mod-tbl-row"><span>דני לוי</span><span>רובה</span><span>5.56</span><span>60</span><span>מתחמש</span></div>
+                  <div class="mod-tbl-row"><span>נועה גולן</span><span>אקדח</span><span>9mm</span><span>50</span><span>חידוש</span></div>
+                  <div class="mod-tbl-row"><span>רון אברהם</span><span>אקדח</span><span>.45</span><span>40</span><span>רענון</span></div>
+                  <div class="mod-tbl-footer"><span class="mod-badge-green">4 יורים</span><span class="mod-badge-blue">200 כדורים</span></div>
+                </div>
+              </div>
+              <!-- Slide 3: ייצוא -->
+              <div class="carousel-slide">
+                <div class="mod-search-demo">
+                  <div class="mod-search-bar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8a96a6" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span class="mod-typing" data-text="יוסי כהן">‏</span></div>
+                  <div class="mod-search-result">
+                    <div class="mod-result-card"><strong>יוסי כהן</strong><span>ת.ז 305128476 · אקדח 9mm · רענון</span><span class="mod-found-badge">נמצא ביומן ✓</span></div>
+                  </div>
+                </div>
+                <div class="mod-cloud-flow">
+                  <div class="mod-cloud-step"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2979ff" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF</div>
+                  <div class="mod-cloud-arrow">←</div>
+                  <div class="mod-cloud-step"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a1628" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>ייצוא</div>
+                  <div class="mod-cloud-arrow">←</div>
+                  <div class="mod-cloud-step"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2979ff" stroke-width="2"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>ענן</div>
+                </div>
+              </div>
+              <div class="carousel-dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
             </div>
           </div>
         </div>
