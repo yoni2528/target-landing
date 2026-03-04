@@ -398,9 +398,7 @@ function initCarousel(carousel) {
   const dots = carousel.querySelectorAll('.dot');
   let current = 0;
   let timer;
-  // Per-slide durations: how long each slide stays visible before advancing
-  // Slide 0→1 triggered by scroll (handled in animateStickyCard), then:
-  const durations = [2500, 2000, 1500]; // slide1, slide2, slide3
+  const speed = parseInt(carousel.dataset.speed) || 2000;
 
   function goTo(n) {
     slides[current].classList.remove('active');
@@ -411,27 +409,17 @@ function initCarousel(carousel) {
     animateSlide(slides[current]);
   }
 
-  carousel._goTo = goTo;
-
-  function scheduleNext() {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      goTo(current + 1);
-      scheduleNext();
-    }, durations[current]);
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), speed);
   }
-
-  carousel._scheduleNext = scheduleNext;
 
   dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => { clearTimeout(timer); goTo(i); scheduleNext(); });
+    dot.addEventListener('click', () => { goTo(i); startTimer(); });
   });
 
-  // Don't auto-start for scroll-carousel — wait for scroll trigger
-  if (!carousel.dataset.scrollCarousel) {
-    animateSlide(slides[0]);
-    scheduleNext();
-  }
+  animateSlide(slides[0]);
+  startTimer();
 }
 
 function animateSlide(slide) {
@@ -537,15 +525,6 @@ function animateStickyCard(card) {
   // Init carousel if present
   const carousel = card.querySelector('.mod-carousel');
   if (carousel && !carousel._init) initCarousel(carousel);
-  // Scroll-carousel: start on slide 0, then advance on activation
-  if (carousel && carousel.dataset.scrollCarousel) {
-    animateSlide(carousel.querySelectorAll('.carousel-slide')[0]);
-    // When card becomes active (scroll arrived), go to slide 2 after short pause
-    setTimeout(() => {
-      if (carousel._goTo) carousel._goTo(1);
-      if (carousel._scheduleNext) carousel._scheduleNext();
-    }, 800);
-  }
   // Count-up numbers
   card.querySelectorAll('.mock-count').forEach(counter => {
     const target = parseInt(counter.dataset.target);
