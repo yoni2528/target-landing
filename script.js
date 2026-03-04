@@ -470,6 +470,91 @@ function animateSlide(slide) {
   });
 }
 
+// ===== STICKY MODULES SCROLL =====
+(function initStickyModules() {
+  const textBlocks = document.querySelectorAll('.sticky-text-block');
+  const cards = document.querySelectorAll('.sticky-card');
+  const dots = document.querySelectorAll('.sticky-dot');
+  const dotsWrap = document.querySelector('.sticky-dots');
+  if (!textBlocks.length) return;
+
+  let currentIdx = 0;
+  const section = document.getElementById('modules');
+
+  function update() {
+    const viewCenter = window.innerHeight / 2;
+    let activeIdx = 0;
+
+    textBlocks.forEach((block, i) => {
+      const rect = block.getBoundingClientRect();
+      if (rect.top < viewCenter && rect.bottom > viewCenter) activeIdx = i;
+    });
+
+    // Show/hide dots based on section visibility
+    if (dotsWrap) {
+      const sRect = section.getBoundingClientRect();
+      const inView = sRect.top < window.innerHeight * 0.3 && sRect.bottom > window.innerHeight * 0.5;
+      dotsWrap.classList.toggle('visible', inView);
+    }
+
+    if (activeIdx !== currentIdx) {
+      currentIdx = activeIdx;
+      textBlocks.forEach((b, i) => b.classList.toggle('active', i === activeIdx));
+      cards.forEach((c, i) => c.classList.toggle('active', i === activeIdx));
+      dots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+      // Trigger count-up animations for newly active card
+      animateStickyCard(cards[activeIdx]);
+    }
+  }
+
+  // Dot click navigation
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      textBlocks[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+function animateStickyCard(card) {
+  if (!card || card._animated) return;
+  card._animated = true;
+  // Count-up numbers
+  card.querySelectorAll('.mock-count').forEach(counter => {
+    const target = parseInt(counter.dataset.target);
+    const prefix = counter.dataset.prefix || '';
+    const suffix = counter.dataset.suffix || '';
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / 1200, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      counter.textContent = prefix + Math.round(target * eased).toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    setTimeout(() => requestAnimationFrame(tick), 300);
+  });
+  // Typing animations
+  card.querySelectorAll('.mod-typing').forEach(el => {
+    const text = el.dataset.text;
+    const delay = parseInt(el.dataset.delay) || 0;
+    el.textContent = '';
+    el.classList.remove('typed');
+    if (el.parentElement) el.parentElement.classList.remove('typed');
+    let i = 0;
+    setTimeout(() => {
+      const interval = setInterval(() => {
+        el.textContent = text.substring(0, ++i);
+        if (i >= text.length) { clearInterval(interval); el.classList.add('typed'); if (el.parentElement) el.parentElement.classList.add('typed'); }
+      }, 70);
+    }, delay);
+  });
+  // Show form button
+  const formBtn = card.querySelector('.mod-form-btn');
+  if (formBtn) { formBtn.classList.remove('show'); setTimeout(() => formBtn.classList.add('show'), 3600); }
+}
+
 // ===== SHAKE ANIMATION (injected) =====
 const style = document.createElement('style');
 style.textContent = `
