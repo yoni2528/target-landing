@@ -457,12 +457,12 @@ function animateSlide(slide) {
   const result = slide.querySelector('.mod-search-result');
   if (result) {
     result.classList.remove('show');
-    setTimeout(() => result.classList.add('show'), 1800);
+    setTimeout(() => result.classList.add('show'), 700);
   }
   const exportBtn = slide.querySelector('.mod-export-btn');
   if (exportBtn) {
     exportBtn.classList.remove('show');
-    setTimeout(() => exportBtn.classList.add('show'), 2400);
+    setTimeout(() => exportBtn.classList.add('show'), 1200);
   }
 
   // Table rows
