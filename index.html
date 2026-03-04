@@ -393,8 +393,8 @@
           <div class="mod-booking-cal anim-children">
             <div class="mod-cal-head"><span>א</span><span>ב</span><span>ג</span><span>ד</span><span>ה</span><span>ו</span><span>ש</span></div>
             <div class="mod-cal-row"><span class="mod-cal-off">23</span><span class="mod-cal-off">24</span><span class="mod-cal-off">25</span><span class="mod-cal-off">26</span><span class="mod-cal-off">27</span><span class="mod-cal-off">28</span><span class="mod-cal-rest">1</span></div>
-            <div class="mod-cal-row"><span class="mod-cal-full">2</span><span class="mod-cal-has">3</span><span class="mod-cal-active">4</span><span class="mod-cal-has">5</span><span class="mod-cal-full">6</span><span class="mod-cal-has">7</span><span class="mod-cal-rest">8</span></div>
-            <div class="mod-cal-row"><span class="mod-cal-has">9</span><span class="mod-cal-has">10</span><span>11</span><span>12</span><span>13</span><span>14</span><span class="mod-cal-rest">15</span></div>
+            <div class="mod-cal-row"><span>2<small class="cal-count">8</small></span><span>3<small class="cal-count">11</small></span><span class="mod-cal-active">4<small class="cal-count">14</small></span><span>5<small class="cal-count">6</small></span><span>6<small class="cal-count">9</small></span><span>7<small class="cal-count">12</small></span><span class="mod-cal-rest">8</span></div>
+            <div class="mod-cal-row"><span>9<small class="cal-count">7</small></span><span>10<small class="cal-count">10</small></span><span>11<small class="cal-count">5</small></span><span>12<small class="cal-count">3</small></span><span>13<small class="cal-count">8</small></span><span>14<small class="cal-count">11</small></span><span class="mod-cal-rest">15</span></div>
           </div>
           <div class="mod-booking-stats">
             <div class="mod-bstat">
@@ -472,19 +472,25 @@
               <span class="mod-big-label">לקוחות רשומים</span>
             </div>
             <div class="mod-clients-map">
-              <svg viewBox="0 0 120 260" class="mod-israel-map">
-                <path d="M65,8 L78,18 L85,35 L88,55 L82,72 L80,90 L78,105 L74,120 L68,140 L64,158 L60,175 L58,195 L60,210 L62,225 L60,240 L56,250 L54,240 L52,225 L48,210 L45,195 L42,175 L40,158 L38,140 L35,120 L32,105 L30,90 L28,72 L32,55 L35,35 L42,18 Z" fill="#f0f4ff" stroke="#2979ff" stroke-width="1.5"/>
-                <circle cx="50" cy="45" r="5" fill="#2979ff" opacity="0.9"><animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/></circle>
-                <circle cx="45" cy="75" r="7" fill="#2979ff" opacity="0.8"><animate attributeName="r" values="5;8;5" dur="2.5s" repeatCount="indefinite"/></circle>
-                <circle cx="65" cy="85" r="6" fill="#2979ff" opacity="0.7"><animate attributeName="r" values="4;7;4" dur="2.2s" repeatCount="indefinite"/></circle>
-                <circle cx="50" cy="160" r="4" fill="#2979ff" opacity="0.5"><animate attributeName="r" values="3;5;3" dur="1.8s" repeatCount="indefinite"/></circle>
-                <circle cx="58" cy="230" r="3" fill="#2979ff" opacity="0.4"><animate attributeName="r" values="2;4;2" dur="2s" repeatCount="indefinite"/></circle>
+              <svg viewBox="0 0 200 520" class="mod-israel-map">
+                <!-- Israel outline - geographic shape -->
+                <path d="M120,10 L135,15 L145,25 L148,30 L140,32 L130,28 L115,30 L100,35 L90,40 L85,48 L80,55 L78,65 L82,75 L95,78 L110,75 L118,72 L125,68 L132,72 L138,80 L140,90 L135,100 L125,108 L118,115 L112,125 L108,135 L105,150 L102,165 L98,180 L95,195 L92,210 L88,230 L85,250 L82,270 L80,285 L78,300 L80,315 L85,330 L90,340 L92,348 L88,355 L82,365 L78,380 L76,395 L78,410 L82,420 L85,430 L80,440 L72,450 L65,460 L60,475 L58,490 L60,500 L62,490 L66,475 L70,460 L68,445 L72,430 L78,418 L74,405 L72,390 L74,375 L78,360 L82,348 L78,335 L72,320 L68,305 L66,290 L68,275 L70,260 L72,245 L75,230 L78,215 L80,200 L82,185 L84,170 L86,155 L88,140 L90,130 L92,120 L95,112 L100,105 L108,98 L115,92 L120,85 L118,78 L110,80 L95,82 L82,80 L75,72 L72,60 L75,50 L80,42 L88,36 L95,32 L108,28 L118,25 L128,22 L132,18 L125,12 Z" fill="#f0f4ff" stroke="#2979ff" stroke-width="2"/>
+                <!-- Haifa area -->
+                <circle cx="88" cy="80" r="8" fill="#2979ff" opacity="0.9"><animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite"/></circle>
+                <!-- Tel Aviv area -->
+                <circle cx="80" cy="160" r="10" fill="#2979ff" opacity="0.85"><animate attributeName="r" values="7;12;7" dur="2.5s" repeatCount="indefinite"/></circle>
+                <!-- Jerusalem area -->
+                <circle cx="100" cy="200" r="8" fill="#2979ff" opacity="0.8"><animate attributeName="r" values="6;10;6" dur="2.2s" repeatCount="indefinite"/></circle>
+                <!-- Beer Sheva area -->
+                <circle cx="82" cy="310" r="6" fill="#2979ff" opacity="0.6"><animate attributeName="r" values="4;7;4" dur="1.8s" repeatCount="indefinite"/></circle>
+                <!-- Eilat area -->
+                <circle cx="62" cy="480" r="4" fill="#2979ff" opacity="0.4"><animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/></circle>
               </svg>
             </div>
             <div class="mod-clients-stats">
               <div class="mod-cstat"><span class="mod-cstat-num mock-count" data-target="38">0</span><span class="mod-cstat-label">חידושים החודש</span></div>
               <div class="mod-cstat"><span class="mod-cstat-num">62%</span><span class="mod-cstat-label">אקדח 9mm</span></div>
-              <div class="mod-cstat"><span class="mod-cstat-num mock-count" data-target="12">0</span><span class="mod-cstat-label">לידים חדשים</span></div>
+              <div class="mod-cstat"><span class="mod-cstat-num mock-count" data-target="122">0</span><span class="mod-cstat-label">לידים חדשים</span></div>
               <div class="mod-cstat"><span class="mod-cstat-num mock-count" data-target="94" data-suffix="%">0%</span><span class="mod-cstat-label">שימור לקוחות</span></div>
             </div>
           </div>
@@ -505,7 +511,7 @@
           <div class="mod-revenue-dash anim-children">
             <div class="mod-rev-top">
               <div class="mod-rev-main">
-                <span class="mod-rev-amount mock-count" data-target="32800" data-prefix="₪">₪0</span>
+                <span class="mod-rev-amount mock-count" data-target="282736" data-prefix="₪">₪0</span>
                 <span class="mod-rev-change">+12% מהחודש שעבר</span>
               </div>
             </div>
