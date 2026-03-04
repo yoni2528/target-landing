@@ -453,18 +453,16 @@ function animateSlide(slide) {
     setTimeout(() => formBtn.classList.add('show'), 3600);
   }
 
-  // Show search result
+  // Show search result, then export button
   const result = slide.querySelector('.mod-search-result');
   if (result) {
     result.classList.remove('show');
     setTimeout(() => result.classList.add('show'), 1800);
   }
-
-  // Show cloud flow
-  const cloud = slide.querySelector('.mod-cloud-flow');
-  if (cloud) {
-    cloud.classList.remove('show');
-    setTimeout(() => cloud.classList.add('show'), 2400);
+  const exportBtn = slide.querySelector('.mod-export-btn');
+  if (exportBtn) {
+    exportBtn.classList.remove('show');
+    setTimeout(() => exportBtn.classList.add('show'), 2400);
   }
 
   // Table rows
