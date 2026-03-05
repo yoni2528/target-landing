@@ -13,6 +13,11 @@ function saveShooterToDB(data) {
   localStorage.setItem(SHOOTERS_KEY, JSON.stringify(db));
 }
 
+function onIdInput() {
+  const idVal = document.getElementById('d-id').value.trim();
+  if (idVal.length === 9) lookupShooter();
+}
+
 function lookupShooter() {
   const idVal = document.getElementById('d-id').value.trim();
   if (!idVal || idVal.length < 5) return;
