@@ -1,5 +1,35 @@
 // ===== DIARY DEMO =====
 const entries = [];
+const SHOOTERS_KEY = 'matara_shooters';
+
+function getShootersDB() {
+  try { return JSON.parse(localStorage.getItem(SHOOTERS_KEY)) || {}; } catch { return {}; }
+}
+
+function saveShooterToDB(data) {
+  if (!data.id) return;
+  const db = getShootersDB();
+  db[data.id] = { name: data.name, phone: data.phone, address: data.address, weaponType: data.weaponType, model: data.model, caliber: data.caliber, serial: data.serial, license: data.license, licenseExp: data.licenseExp };
+  localStorage.setItem(SHOOTERS_KEY, JSON.stringify(db));
+}
+
+function lookupShooter() {
+  const idVal = document.getElementById('d-id').value.trim();
+  if (!idVal || idVal.length < 5) return;
+  const db = getShootersDB();
+  const shooter = db[idVal];
+  if (!shooter) return;
+
+  const fields = { 'd-name': shooter.name, 'd-phone': shooter.phone, 'd-address': shooter.address, 'd-weapon-type': shooter.weaponType, 'd-model': shooter.model, 'd-caliber': shooter.caliber, 'd-serial': shooter.serial, 'd-license': shooter.license, 'd-license-exp': shooter.licenseExp };
+  let filled = 0;
+  for (const [id, val] of Object.entries(fields)) {
+    if (val) { document.getElementById(id).value = val; filled++; }
+  }
+  if (filled > 0) {
+    const hint = document.getElementById('autocomplete-hint');
+    if (hint) { hint.textContent = `זוהה יורה קיים — ${filled} שדות הושלמו`; hint.style.display = 'block'; setTimeout(() => { hint.style.display = 'none'; }, 4000); }
+  }
+}
 
 function startDiary() {
   document.getElementById('diary-start').style.display = 'none';
@@ -19,7 +49,7 @@ function saveEntry() {
     return;
   }
 
-  entries.push({
+  const entry = {
     date: document.getElementById('d-date').value,
     trainingType: document.getElementById('d-training-type').value,
     ammo: document.getElementById('d-ammo').value || '',
@@ -33,7 +63,9 @@ function saveEntry() {
     serial: document.getElementById('d-serial').value.trim(),
     license: document.getElementById('d-license').value.trim(),
     licenseExp: document.getElementById('d-license-exp').value,
-  });
+  };
+  entries.push(entry);
+  saveShooterToDB(entry);
 
   // Clear shooter-specific fields (keep date, training type, ammo)
   document.getElementById('d-name').value = '';
@@ -571,6 +603,21 @@ function animateStickyCard(card) {
   const formBtn = card.querySelector('.mod-form-btn');
   if (formBtn) { formBtn.classList.remove('show'); setTimeout(() => formBtn.classList.add('show'), 3600); }
 }
+
+// ===== AMMO DATE TABS =====
+document.querySelectorAll('.ammo-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const range = tab.dataset.range;
+    const labels = { day: 'היום', week: 'השבוע', month: 'החודש', year: 'השנה' };
+    document.querySelectorAll('.ammo-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelectorAll('.ammo-count').forEach(el => { el.textContent = el.dataset[range]; });
+    const total = document.querySelector('.ammo-total');
+    if (total) total.textContent = total.dataset[range];
+    const period = document.querySelector('.ammo-period');
+    if (period) period.textContent = labels[range];
+  });
+});
 
 // ===== SHAKE ANIMATION (injected) =====
 const style = document.createElement('style');
