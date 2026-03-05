@@ -54,11 +54,18 @@
 
       <!-- OCR scan - first thing -->
       <div class="ocr-hero">
-        <button class="btn-ocr-big" onclick="document.getElementById('ocr-input').click()">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
-          צלם רישיון נשק ומלא אוטומטית
-        </button>
-        <input type="file" id="ocr-input" accept="image/*" capture="environment" style="display:none" onchange="runOCR(this)">
+        <div class="ocr-buttons">
+          <button class="btn-ocr-big" onclick="document.getElementById('ocr-input-camera').click()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            צלם רישיון נשק
+          </button>
+          <button class="btn-ocr-gallery" onclick="document.getElementById('ocr-input-gallery').click()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            העלה מהגלריה
+          </button>
+        </div>
+        <input type="file" id="ocr-input-camera" accept="image/*" capture="environment" style="display:none" onchange="runOCR(this)">
+        <input type="file" id="ocr-input-gallery" accept="image/*" style="display:none" onchange="runOCR(this)">
         <div id="ocr-status" class="ocr-status"></div>
         <p class="ocr-hint">או מלא ידנית למטה</p>
       </div>
@@ -78,6 +85,9 @@
             <option value="חידוש רישיון">חידוש רישיון</option>
             <option value="ירי מקצועי">ירי מקצועי</option>
             <option value="אימון קבוצתי">אימון קבוצתי</option>
+            <option value="קורס מפקחים">קורס מפקחים</option>
+            <option value="קורס מדריכים">קורס מדריכים</option>
+            <option value="ירי חופשי">ירי חופשי</option>
           </select>
         </div>
         <div class="field">
@@ -380,13 +390,19 @@
         <!-- Card 2: מעקב תחמושת — Gauge meters -->
         <div class="sticky-card" data-idx="2">
           <div class="gauges-wrap">
+            <div class="ammo-date-tabs">
+              <button class="ammo-tab" data-range="day">היום</button>
+              <button class="ammo-tab" data-range="week">השבוע</button>
+              <button class="ammo-tab active" data-range="month">החודש</button>
+              <button class="ammo-tab" data-range="year">השנה</button>
+            </div>
             <div class="gauge-item">
               <svg viewBox="0 0 120 80" class="gauge-svg">
                 <path d="M15,70 A45,45 0 0,1 105,70" fill="none" stroke="#eef1f5" stroke-width="10" stroke-linecap="round"/>
                 <path d="M15,70 A45,45 0 0,1 105,70" fill="none" stroke="#2979ff" stroke-width="10" stroke-linecap="round" class="gauge-fill" style="--pct:72"/>
               </svg>
               <div class="gauge-label">9mm</div>
-              <div class="gauge-val">72%</div>
+              <div class="gauge-val ammo-count" data-day="1,240" data-week="8,680" data-month="35,100" data-year="421,200">35,100</div>
             </div>
             <div class="gauge-item">
               <svg viewBox="0 0 120 80" class="gauge-svg">
@@ -394,7 +410,7 @@
                 <path d="M15,70 A45,45 0 0,1 105,70" fill="none" stroke="#ff4444" stroke-width="10" stroke-linecap="round" class="gauge-fill" style="--pct:34"/>
               </svg>
               <div class="gauge-label">5.56mm</div>
-              <div class="gauge-val gauge-low">34%</div>
+              <div class="gauge-val gauge-low ammo-count" data-day="310" data-week="2,170" data-month="8,780" data-year="105,360">8,780</div>
             </div>
             <div class="gauge-item">
               <svg viewBox="0 0 120 80" class="gauge-svg">
@@ -402,19 +418,79 @@
                 <path d="M15,70 A45,45 0 0,1 105,70" fill="none" stroke="#00c853" stroke-width="10" stroke-linecap="round" class="gauge-fill" style="--pct:89"/>
               </svg>
               <div class="gauge-label">7.62mm</div>
-              <div class="gauge-val">89%</div>
+              <div class="gauge-val ammo-count" data-day="170" data-week="1,190" data-month="4,876" data-year="58,512">4,876</div>
             </div>
-            <div class="gauges-total">סה״כ נורו החודש: <strong>2,770</strong></div>
+            <div class="gauges-total">סה״כ נורו <span class="ammo-period">החודש</span>: <strong class="ammo-total" data-day="1,720" data-week="12,040" data-month="48,756" data-year="585,072">48,756</strong></div>
+            <button class="ammo-export-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 12 15 15"/></svg>
+              ייצא דוח תחמושת
+            </button>
           </div>
         </div>
 
-        <!-- Card 3: ניהול לקוחות — Client cards stack -->
+        <!-- Card 3: מיני דשבורד CRM -->
         <div class="sticky-card" data-idx="3">
-          <div class="client-stack">
-            <div class="client-card cc-3"><div class="cc-avatar">ר.א</div><div class="cc-info"><strong>רון אברהם</strong><span>חידוש רישיון · 28.02</span></div><div class="cc-status cc-active">פעיל</div></div>
-            <div class="client-card cc-2"><div class="cc-avatar cc-av2">נ.ג</div><div class="cc-info"><strong>נועה גולן</strong><span>אימון קבוצתי · 01.03</span></div><div class="cc-status cc-active">פעיל</div></div>
-            <div class="client-card cc-1"><div class="cc-avatar cc-av3">ד.ל</div><div class="cc-info"><strong>דני לוי</strong><span>מתחמש חדש · 04.03</span></div><div class="cc-status cc-new">חדש</div></div>
-            <div class="client-counter"><span class="mock-count" data-target="15826">0</span> לקוחות רשומים</div>
+          <div class="mini-dash">
+            <!-- Search bar integrated in top -->
+            <div class="md-topbar">
+              <div class="md-search-bar">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <span>חיפוש לקוח...</span>
+              </div>
+              <div class="md-topbar-date">מרץ 2026</div>
+            </div>
+            <!-- Visual KPI strip -->
+            <div class="md-visual-row">
+              <!-- Big number + ring side by side -->
+              <div class="md-big-kpi">
+                <div class="md-big-num"><span class="mock-count" data-target="763">0</span></div>
+                <div class="md-big-sub">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2979ff" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                  לקוחות החודש
+                </div>
+              </div>
+              <!-- Donut ring for retention -->
+              <div class="md-ring-wrap">
+                <svg viewBox="0 0 100 100" class="md-ring-svg">
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#eef1f5" stroke-width="8"/>
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#2979ff" stroke-width="8" stroke-linecap="round" class="md-ring-fill" transform="rotate(-90 50 50)"/>
+                </svg>
+                <div class="md-ring-center">
+                  <div class="md-ring-pct">89%</div>
+                  <div class="md-ring-label">שימור</div>
+                </div>
+              </div>
+            </div>
+            <!-- New customers pill -->
+            <div class="md-new-customers">
+              <div class="md-nc-left">
+                <span class="md-nc-num"><span class="mock-count" data-target="132">0</span></span>
+                <span class="md-nc-text">לקוחות חדשים</span>
+              </div>
+              <div class="md-nc-badge">▲ 12%</div>
+            </div>
+            <!-- Bar chart — big and visual -->
+            <div class="md-chart-section">
+              <div class="md-bars">
+                <div class="md-bar-col"><div class="md-bar" style="--h:55%"></div><span>אוק׳</span></div>
+                <div class="md-bar-col"><div class="md-bar" style="--h:68%"></div><span>נוב׳</span></div>
+                <div class="md-bar-col"><div class="md-bar" style="--h:60%"></div><span>דצמ׳</span></div>
+                <div class="md-bar-col"><div class="md-bar" style="--h:75%"></div><span>ינו׳</span></div>
+                <div class="md-bar-col"><div class="md-bar" style="--h:82%"></div><span>פבר׳</span></div>
+                <div class="md-bar-col"><div class="md-bar md-bar-current" style="--h:92%"></div><span>מרץ</span></div>
+              </div>
+            </div>
+            <!-- Bottom: alerts + rating -->
+            <div class="md-bottom">
+              <div class="md-pill md-pill-warn">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <strong>146</strong> תזכורות לרענון/חידוש
+              </div>
+              <div class="md-pill md-pill-stars">
+                <span class="md-stars-visual">★★★★★</span>
+                <strong>4.7</strong>/5
+              </div>
+            </div>
           </div>
         </div>
 
