@@ -108,7 +108,7 @@ function finishDiary() {
 }
 
 function formatDate(dateStr) {
-  if (!dateStr) return '—';
+  if (!dateStr) return ' ';
   const [y, m, d] = dateStr.split('-');
   return `${d}.${m}.${y}`;
 }
@@ -125,16 +125,16 @@ function showResults() {
       <td>${i + 1}</td>
       <td>${formatDate(e.date)}</td>
       <td>${e.name}</td>
-      <td>${e.id || '—'}</td>
-      <td>${e.phone || '—'}</td>
-      <td>${e.address || '—'}</td>
+      <td>${e.id || ' '}</td>
+      <td>${e.phone || ' '}</td>
+      <td>${e.address || ' '}</td>
       <td>${e.trainingType}</td>
-      <td>${e.ammo || '—'}</td>
+      <td>${e.ammo || ' '}</td>
       <td>${e.weaponType}</td>
-      <td>${e.model || '—'}</td>
-      <td>${e.caliber || '—'}</td>
-      <td>${e.serial || '—'}</td>
-      <td>${e.license || '—'}</td>
+      <td>${e.model || ' '}</td>
+      <td>${e.caliber || ' '}</td>
+      <td>${e.serial || ' '}</td>
+      <td>${e.license || ' '}</td>
       <td>${formatDate(e.licenseExp)}</td>
     </tr>`).join('');
 }
@@ -255,15 +255,15 @@ async function exportPDF() {
             <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${i + 1}</td>
             <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${formatDate(e.date)}</td>
             <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;font-weight:500;">${e.name}</td>
-            <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${e.id || '—'}</td>
-            <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${e.phone || '—'}</td>
+            <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${e.id || ' '}</td>
+            <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${e.phone || ' '}</td>
             <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${e.trainingType}</td>
-            <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${e.ammo || '—'}</td>
+            <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${e.ammo || ' '}</td>
             <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${e.weaponType}</td>
-            <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${e.model || '—'}</td>
-            <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${e.caliber || '—'}</td>
-            <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${e.serial || '—'}</td>
-            <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${e.license || '—'}</td>
+            <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${e.model || ' '}</td>
+            <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${e.caliber || ' '}</td>
+            <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${e.serial || ' '}</td>
+            <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${e.license || ' '}</td>
             <td style="padding:6px 4px;border-bottom:1px solid #e0e0e0;">${formatDate(e.licenseExp)}</td>
           </tr>
         `).join('')}
