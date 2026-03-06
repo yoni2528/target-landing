@@ -692,13 +692,96 @@ document.querySelectorAll('.ammo-tab').forEach(tab => {
     if (idx >= total) idx = total - 1;
     current = idx;
 
-    // Each slide is 75% wide. To center slide N: shift left by N*75%, then offset right by 12.5%
-    const slideWidth = 75;
-    const offset = -(idx * slideWidth) + 12.5;
+    // Each slide is 80% wide. To center slide N: shift left by N*80%, then offset right by 10%
+    const slideWidth = 80;
+    const offset = -(idx * slideWidth) + 10;
     track.style.transform = `translateX(${offset}%)`;
 
     slides.forEach((s, i) => s.classList.toggle('mob-active', i === idx));
     dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+
+    // Trigger animations on newly active slide
+    animateMobSlide(slides[idx]);
+  }
+
+  function animateMobSlide(slide) {
+    if (!slide || slide._animated) return;
+    slide._animated = true;
+
+    // Init and start inner carousel (card 0 has mod-carousel)
+    const innerCarousel = slide.querySelector('.mod-carousel');
+    if (innerCarousel && !innerCarousel._init) {
+      initCarousel(innerCarousel);
+      if (innerCarousel._start) { innerCarousel._start(); innerCarousel._start = null; }
+    }
+
+    // Count-up numbers
+    slide.querySelectorAll('.mock-count').forEach(counter => {
+      const target = parseInt(counter.dataset.target);
+      const prefix = counter.dataset.prefix || '';
+      const suffix = counter.dataset.suffix || '';
+      const start = performance.now();
+      function tick(now) {
+        const progress = Math.min((now - start) / 1200, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        counter.textContent = prefix + Math.round(target * eased).toLocaleString() + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      setTimeout(() => requestAnimationFrame(tick), 300);
+    });
+
+    // Typing animations
+    slide.querySelectorAll('.mod-typing, .dl-typing').forEach(el => {
+      const text = el.dataset.text;
+      const delay = parseInt(el.dataset.delay) || 0;
+      el.textContent = '';
+      el.classList.remove('typed');
+      if (el.parentElement) el.parentElement.classList.remove('typed');
+      let i = 0;
+      setTimeout(() => {
+        const interval = setInterval(() => {
+          el.textContent = text.substring(0, ++i);
+          if (i >= text.length) { clearInterval(interval); el.classList.add('typed'); if (el.parentElement) el.parentElement.classList.add('typed'); }
+        }, 70);
+      }, delay);
+    });
+
+    // Show form button
+    const formBtn = slide.querySelector('.mod-form-btn');
+    if (formBtn) { formBtn.classList.remove('show'); setTimeout(() => formBtn.classList.add('show'), 3600); }
+
+    // Table rows slide in
+    slide.querySelectorAll('.mod-tbl-row').forEach((row, i) => {
+      row.classList.remove('show');
+      setTimeout(() => row.classList.add('show'), 200 + i * 150);
+    });
+
+    // Show search result + export
+    const result = slide.querySelector('.mod-search-result');
+    if (result) { result.classList.remove('show'); setTimeout(() => result.classList.add('show'), 700); }
+    const exportBtn = slide.querySelector('.mod-export-btn');
+    if (exportBtn) { exportBtn.classList.remove('show'); setTimeout(() => exportBtn.classList.add('show'), 1200); }
+
+    // Chat bubble animations - reset
+    slide.querySelectorAll('.chat-bubble').forEach(b => {
+      b.style.animation = 'none';
+      b.offsetHeight; // force reflow
+      b.style.animation = '';
+    });
+
+    // Gauge fills - re-trigger
+    slide.querySelectorAll('.gauge-fill').forEach(g => {
+      g.style.animation = 'none';
+      g.offsetHeight;
+      g.style.animation = '';
+    });
+
+    // Bar chart bars
+    slide.querySelectorAll('.md-bar').forEach(b => {
+      b.style.animation = 'none';
+      b.offsetHeight;
+      b.style.animation = '';
+    });
   }
 
   // Touch/swipe
@@ -724,8 +807,8 @@ document.querySelectorAll('.ammo-tab').forEach(tab => {
     if (!isHorizontal) return;
 
     e.preventDefault();
-    const slideWidth = 75;
-    const baseOffset = -(current * slideWidth) + 12.5;
+    const slideWidth = 80;
+    const baseOffset = -(current * slideWidth) + 10;
     const pxToPercent = (dx / track.parentElement.offsetWidth) * 100;
     track.style.transform = `translateX(${baseOffset + pxToPercent}%)`;
   }, { passive: false });
