@@ -625,7 +625,7 @@ document.querySelectorAll('.ammo-tab').forEach(tab => {
 });
 
 // ===== MOBILE MODULES CAROUSEL =====
-(function initMobileCarousel() {
+function initMobileCarousel() {
   if (window.innerWidth > 768) return;
 
   const container = document.querySelector('.sticky-modules');
@@ -824,7 +824,9 @@ document.querySelectorAll('.ammo-tab').forEach(tab => {
   }, { passive: true });
 
   goTo(0);
-})();
+}
+initMobileCarousel();
+window.addEventListener('i18n-rebuild-carousel', initMobileCarousel);
 
 // ===== ABOUT MODAL =====
 function openAbout() {
