@@ -624,6 +624,125 @@ document.querySelectorAll('.ammo-tab').forEach(tab => {
   });
 });
 
+// ===== MOBILE MODULES CAROUSEL =====
+(function initMobileCarousel() {
+  if (window.innerWidth > 768) return;
+
+  const container = document.querySelector('.sticky-modules');
+  if (!container) return;
+
+  const cards = document.querySelectorAll('.sticky-card');
+  const textBlocks = document.querySelectorAll('.sticky-text-block');
+  if (!cards.length) return;
+
+  // Build carousel DOM
+  const carousel = document.createElement('div');
+  carousel.className = 'mob-carousel';
+
+  const track = document.createElement('div');
+  track.className = 'mob-carousel-track';
+
+  cards.forEach((card, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'mob-slide' + (i === 0 ? ' mob-active' : '');
+    slide.dataset.idx = i;
+
+    const inner = document.createElement('div');
+    inner.className = 'mob-slide-inner';
+
+    // Clone visual
+    const visual = document.createElement('div');
+    visual.className = 'mob-slide-visual';
+    visual.innerHTML = card.innerHTML;
+
+    // Clone text
+    const text = document.createElement('div');
+    text.className = 'mob-slide-text';
+    if (textBlocks[i]) text.innerHTML = textBlocks[i].innerHTML;
+
+    inner.appendChild(visual);
+    inner.appendChild(text);
+    slide.appendChild(inner);
+    track.appendChild(slide);
+  });
+
+  carousel.appendChild(track);
+
+  // Dots
+  const dotsWrap = document.createElement('div');
+  dotsWrap.className = 'mob-carousel-dots';
+  cards.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'mob-carousel-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+  carousel.appendChild(dotsWrap);
+
+  container.appendChild(carousel);
+
+  // Carousel logic
+  let current = 0;
+  const total = cards.length;
+  const dots = dotsWrap.querySelectorAll('.mob-carousel-dot');
+  const slides = track.querySelectorAll('.mob-slide');
+
+  function goTo(idx) {
+    if (idx < 0) idx = 0;
+    if (idx >= total) idx = total - 1;
+    current = idx;
+
+    // Each slide is 75% wide. To center slide N: shift left by N*75%, then offset right by 12.5%
+    const slideWidth = 75;
+    const offset = -(idx * slideWidth) + 12.5;
+    track.style.transform = `translateX(${offset}%)`;
+
+    slides.forEach((s, i) => s.classList.toggle('mob-active', i === idx));
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  }
+
+  // Touch/swipe
+  let startX = 0, startY = 0, isDragging = false, isHorizontal = null;
+
+  track.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    isDragging = true;
+    isHorizontal = null;
+    track.style.transition = 'none';
+  }, { passive: true });
+
+  track.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const dx = e.touches[0].clientX - startX;
+    const dy = e.touches[0].clientY - startY;
+
+    // Determine scroll direction on first significant move
+    if (isHorizontal === null && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+      isHorizontal = Math.abs(dx) > Math.abs(dy);
+    }
+    if (!isHorizontal) return;
+
+    e.preventDefault();
+    const slideWidth = 75;
+    const baseOffset = -(current * slideWidth) + 12.5;
+    const pxToPercent = (dx / track.parentElement.offsetWidth) * 100;
+    track.style.transform = `translateX(${baseOffset + pxToPercent}%)`;
+  }, { passive: false });
+
+  track.addEventListener('touchend', (e) => {
+    if (!isDragging || !isHorizontal) { isDragging = false; return; }
+    isDragging = false;
+    track.style.transition = 'transform 0.4s cubic-bezier(0.4,0,0.2,1)';
+    const dx = e.changedTouches[0].clientX - startX;
+    if (dx < -40) goTo(current + 1);
+    else if (dx > 40) goTo(current - 1);
+    else goTo(current);
+  }, { passive: true });
+
+  goTo(0);
+})();
+
 // ===== SHAKE ANIMATION (injected) =====
 const style = document.createElement('style');
 style.textContent = `
