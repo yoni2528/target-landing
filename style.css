@@ -820,6 +820,25 @@ footer{padding:0 60px 40px;border-top:1px solid #eef1f5}
   .phone-mockup{width:240px}
 }
 
+/* ===== ABOUT MODAL ===== */
+.about-modal-overlay{position:fixed;inset:0;z-index:9999;background:rgba(10,22,40,0.7);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s}
+.about-modal-overlay.open{display:flex;opacity:1}
+.about-modal{background:#fff;border-radius:20px;max-width:560px;width:92%;max-height:90vh;overflow-y:auto;padding:40px 36px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:aboutIn 0.35s ease}
+@keyframes aboutIn{from{transform:translateY(30px) scale(0.96);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+.about-close{position:absolute;top:12px;left:16px;background:none;border:none;font-size:28px;color:#666;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background 0.2s}
+.about-close:hover{background:#f0f0f0;color:#0a1628}
+.about-logo{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.about-logo span{font-size:28px;font-weight:800;color:#0a1628}
+.about-modal h2{font-size:22px;font-weight:700;color:#0a1628;margin:0 0 16px}
+.about-modal p{font-size:15px;line-height:1.8;color:#444;margin:0 0 12px}
+.about-highlights{display:flex;gap:16px;margin:20px 0;justify-content:center}
+.about-highlight{text-align:center;flex:1;padding:16px 8px;background:#f0f7ff;border-radius:12px}
+.about-highlight-num{font-size:28px;font-weight:800;color:#0a1628}
+.about-highlight-label{font-size:13px;color:#64b5f6;font-weight:600;margin-top:4px}
+.about-cta-text{text-align:center;font-weight:600;color:#0a1628;margin-top:20px}
+.about-cta-btn{display:block;margin:16px auto 0;background:linear-gradient(135deg,#64b5f6,#1e88e5);color:#fff;border:none;padding:12px 36px;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;font-family:'Heebo'}
+.about-cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(30,136,229,0.4)}
+
 /* ===== WHATSAPP FLOAT ===== */
 .wa-float{position:fixed;bottom:28px;left:28px;z-index:1000;background:#25d366;color:#fff;border-radius:50px;display:flex;align-items:center;gap:8px;padding:14px 20px;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:all 0.3s;font-family:'Heebo';font-weight:600;font-size:14px}
 .wa-float:hover{transform:scale(1.05);box-shadow:0 6px 28px rgba(37,211,102,0.5)}

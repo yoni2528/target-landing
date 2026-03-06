@@ -826,6 +826,20 @@ document.querySelectorAll('.ammo-tab').forEach(tab => {
   goTo(0);
 })();
 
+// ===== ABOUT MODAL =====
+function openAbout() {
+  const o = document.getElementById('about-overlay');
+  o.style.display = 'flex';
+  requestAnimationFrame(() => o.classList.add('open'));
+  document.body.style.overflow = 'hidden';
+}
+function closeAbout() {
+  const o = document.getElementById('about-overlay');
+  o.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => { if (!o.classList.contains('open')) o.style.display = 'none'; }, 300);
+}
+
 // ===== SHAKE ANIMATION (injected) =====
 const style = document.createElement('style');
 style.textContent = `
