@@ -702,7 +702,7 @@ footer{padding:0 60px 40px;border-top:1px solid #eef1f5}
   .footer-links{gap:12px}
   .footer-sep{display:none}
   .wa-float-text{display:none}
-  .wa-float{width:56px;height:56px;bottom:20px;left:20px}
+  .wa-float{width:52px;height:52px;bottom:20px;left:16px;padding:0;justify-content:center;border-radius:50%}
 
   /* Video */
   .video-section .section-center{margin-bottom:28px}
